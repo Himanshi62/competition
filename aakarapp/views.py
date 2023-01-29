@@ -4,57 +4,37 @@ from django.shortcuts import render, redirect
 from allauth.socialaccount.models import SocialAccount
 
 ## import data tables from database
-from .models import Submission
+from .models import Mtt
 
 
 # Create your views here.
 
 
-def registerLogiq(request):
-    return render(request, "submission.html")
-
-def index(request):
+def mtt(request):
     user = request.user
-    is_filled = False 
+    is_filled_mtt = False 
     if user.is_authenticated:
         email = user.email
-        is_filled = len(Submission.objects.filter(email=email))==1
-    print(is_filled)
-
-    return render(request, "index.html",
+        is_filled_mtt = len(Mtt.objects.filter(email=email))==1
+        
+    return render(request, "mtt.html",
     {
-        'is_filled':is_filled
+        'is_filled_mtt':is_filled_mtt
     })
-
-def logiq(request):
-    user = request.user
-    is_filled = False 
-    if user.is_authenticated:
-        email = user.email
-        is_filled = len(Submission.objects.filter(email=email))==1
-    return render(request, "logiq.html",
-    {
-        'is_filled':is_filled
-    })
-
-
-def submitted(request):
+    
+    
+def mtt_reg(request):
     if request.method == "POST":
+        
         user = request.user
-        name = request.POST.get('name', '')
         email = user.email
-        colgName = request.POST.get('colgName', '')
-        branch = request.POST.get('branch', '')
-        mobileNo = request.POST.get('mobileNo', '')
-        # mail = request.POST.get('mail', '')
-        program = request.POST.get('program', '')
+        name = request.POST.get('name', '')
+        colg = request.POST.get('colg', '')
+        email1 = request.POST.get('email1', '')
+        contact = request.POST.get('contact', '')
+        ref = request.POST.get('ref', '')
         year = request.POST.get('year', '')
-        address = request.POST.get('address', '')
-        roll_no = request.POST.get('roll_no', '')
-
-        response = Submission(name=name, email=email, colgName=colgName,  branch=branch, mobileNo=mobileNo,
-                              year=year, roll_no=roll_no, address=address, program=program)
+        response = Mtt( email=email, name=name, email1=email1, colg=colg, contact=contact, year=year, ref=ref)
         response.save()
 
-    return  redirect('index')
-
+    return  redirect('mtt')

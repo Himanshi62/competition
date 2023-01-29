@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-hm*9hiw2-9=ecd%w52*uxe8i5qv4et@%7s8(5lu1i!#*v-jgpy"
+SECRET_KEY = "django-insecure-jlxx=(_7@up$zn$%i$46a%0gp*q^gi00zfor9)b@j_lu6m%p3b"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-SITE_ID = 3
+SITE_ID = 2
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

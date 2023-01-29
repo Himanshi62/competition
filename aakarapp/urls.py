@@ -7,11 +7,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.index, name="index"),
-    path('logiq', views.logiq, name="logiq"),
+    path('', views.mtt, name="mtt"),
     path('accounts/', include('allauth.urls')),
-    path('register-logiq', views.registerLogiq, name="registerLogiq"),
-    path('submitted', views.submitted, name="submitted"),
+    path('mtt_reg', views.mtt_reg, name="mtt_reg")
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
